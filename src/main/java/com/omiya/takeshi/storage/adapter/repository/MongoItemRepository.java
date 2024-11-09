@@ -31,8 +31,8 @@ public class MongoItemRepository implements ItemRepository {
         return repository.findAll();
     }
     @Override
-    public List<Item> findByProduto(String produto) {
-        return findByProduto(produto);
+        public List<Item> findByProduto(String produto) {
+        return repository.findByProduto(produto);
 
     }
 }
