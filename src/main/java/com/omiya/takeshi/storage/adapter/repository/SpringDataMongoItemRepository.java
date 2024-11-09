@@ -11,5 +11,4 @@ import java.util.List;
 public interface SpringDataMongoItemRepository extends MongoRepository<Item, String> {
     List<Item> findByProduto(String produto);
 
-
 }

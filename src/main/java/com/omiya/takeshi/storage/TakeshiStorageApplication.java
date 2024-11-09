@@ -1,4 +1,4 @@
-package com.omiya.takeshi.storage.config;
+package com.omiya.takeshi.storage;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @SpringBootApplication(scanBasePackages = "com.omiya.takeshi")
 @EnableFeignClients
 @EnableMongoRepositories(basePackages = {"com.omiya.takeshi.storage.adapter.repository", "com.omiya.takeshi.storage.port"})
-public class TakeshiStorageApplication {
+public class 	TakeshiStorageApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TakeshiStorageApplication.class, args);
 	}

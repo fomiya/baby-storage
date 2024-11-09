@@ -2,11 +2,13 @@ package com.omiya.takeshi.storage.adapter.repository;
 
 import com.omiya.takeshi.storage.domain.model.Item;
 import com.omiya.takeshi.storage.port.ItemRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
-@Repository
+@Component
+@Slf4j
 public class MongoItemRepository implements ItemRepository {
     @Autowired
     private SpringDataMongoItemRepository repository;
@@ -32,7 +34,6 @@ public class MongoItemRepository implements ItemRepository {
     }
     @Override
         public List<Item> findByProduto(String produto) {
-        return repository.findByProduto(produto);
-
+               return repository.findByProduto(produto);
     }
 }
