@@ -1,7 +1,9 @@
 package com.omiya.takeshi.storage.domain.usecase;
 
 import com.omiya.takeshi.storage.domain.model.Item;
+import com.omiya.takeshi.storage.domain.model.QuantitySearch;
 import com.omiya.takeshi.storage.port.ItemRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,5 +36,18 @@ public class ItemService {
 
     public List<Item> listarItensPorProduto(String produto) {
         return itemRepository.findByProduto(produto);
+    }
+
+    public QuantitySearch quantidadeDeProdutos(String produto, String tamanho){
+        List<Item> itens = itemRepository.findByProduto(produto);
+        int quantidade = 0;
+        for (Item item : itens) {
+            if (!StringUtils.isEmpty(tamanho) && item.getTamanho().equals(tamanho)){
+            quantidade += Integer.parseInt(item.getQuantidadePorPacote()) * item.getPacote();
+            }else if (StringUtils.isEmpty(tamanho)){
+                quantidade += Integer.parseInt(item.getQuantidadePorPacote()) * item.getPacote();
+            }
+        }
+        return new QuantitySearch(produto, quantidade);
     }
 }
